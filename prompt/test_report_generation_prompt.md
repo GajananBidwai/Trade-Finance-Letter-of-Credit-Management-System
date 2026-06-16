@@ -1,0 +1,1 @@
+Act as a [qa_persona.md] test the cases from [test_specification_react.md] generate test report file in this format [test-case-execution_template.md]
