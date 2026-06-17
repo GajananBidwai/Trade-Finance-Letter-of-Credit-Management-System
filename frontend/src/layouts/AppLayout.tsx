@@ -1,8 +1,17 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 import { SideNavBar } from './SideNavBar';
 import { TopNavBar } from './TopNavBar';
 
+import { useSelector } from 'react-redux';
+import type { RootState } from '../store';
+
 export const AppLayout = () => {
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
     <div className="flex h-screen w-full bg-background overflow-hidden">
       <SideNavBar />

@@ -14,7 +14,10 @@ app.use(express.json());
 
 // Routes will be mounted here
 import authRoutes from './features/auth';
+import userRoutes from './features/users/route/user.route';
+
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/users', userRoutes);
 
 // Global Error Handler
 app.use(errorHandler);

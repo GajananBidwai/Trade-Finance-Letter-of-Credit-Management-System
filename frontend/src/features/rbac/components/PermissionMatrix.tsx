@@ -1,12 +1,9 @@
-import { useState } from 'react';
 
 interface PermissionMatrixProps {
   roleName: string;
 }
 
 export const PermissionMatrix = ({ roleName }: PermissionMatrixProps) => {
-  const [loading, setLoading] = useState(false);
-
   // Fake loading effect when switching roles
   // In a real app, this would use React Query's isLoading
   // useEffect(() => {
@@ -16,7 +13,7 @@ export const PermissionMatrix = ({ roleName }: PermissionMatrixProps) => {
   // }, [roleName]);
 
   return (
-    <div className={`glass-raised rounded-[24px] overflow-hidden mb-8 transition-opacity duration-300 ${loading ? 'opacity-50' : 'opacity-100'}`}>
+    <div className={`glass-raised rounded-[24px] overflow-hidden mb-8 transition-opacity duration-300 opacity-100`}>
       <div className="p-6 border-b border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4">
         <div>
           <h3 className="font-title-lg text-title-lg text-on-surface flex items-center gap-2">

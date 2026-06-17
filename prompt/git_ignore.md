@@ -1,0 +1,1 @@
+create git ignore in frontend and backend project

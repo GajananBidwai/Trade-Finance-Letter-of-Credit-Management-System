@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 export const SideNavBar = () => {
   const navItems = [
-    { name: 'Dashboard', icon: 'dashboard', path: '/dashboard' },
+    { name: 'Dashboard', icon: 'dashboard', path: '/' },
     { name: 'Workflow', icon: 'account_tree', path: '/workflow' },
     { name: 'Reports', icon: 'assessment', path: '/reports' },
     { name: 'Users', icon: 'group', path: '/users' },
@@ -33,36 +33,13 @@ export const SideNavBar = () => {
             <span className="font-body-md text-body-md">{item.name}</span>
           </NavLink>
         ))}
-        
-        <NavLink 
-          to="/users"
-          className={({ isActive }) => `group flex items-center gap-4 px-4 py-3 transition-colors active:scale-95 duration-200 ${isActive ? 'text-primary bg-primary-container/20 relative' : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest'}`}
-        >
-          {({ isActive }) => (
-            <>
-              {isActive && <div className="absolute right-0 w-1 h-full bg-primary"></div>}
-              <span className="material-symbols-outlined" style={isActive ? { fontVariationSettings: "'FILL' 1" } : {}}>group</span>
-              <span className={`font-body-md text-body-md ${isActive ? 'font-semibold' : ''}`}>Users</span>
-            </>
-          )}
-        </NavLink>
-        
-        <NavLink 
-          to="/rbac"
-          className={({ isActive }) => `group flex items-center gap-4 px-4 py-3 transition-colors active:scale-95 duration-200 ${isActive ? 'text-primary bg-primary-container/20 relative' : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest'}`}
-        >
-          {({ isActive }) => (
-            <>
-              {isActive && <div className="absolute right-0 w-1 h-full bg-primary"></div>}
-              <span className="material-symbols-outlined" style={isActive ? { fontVariationSettings: "'FILL' 1" } : {}}>admin_panel_settings</span>
-              <span className={`font-body-md text-body-md ${isActive ? 'font-semibold' : ''}`}>RBAC</span>
-            </>
-          )}
-        </NavLink>
       </nav>
 
       <div className="mt-auto p-4 bg-slate-800/70 backdrop-blur-md border border-white/10 rounded-xl mb-4">
-        <button className="w-full bg-primary text-on-primary font-bold py-3 rounded-xl active:scale-95 transition-all">
+        <button 
+          onClick={() => window.location.href = '/lc/new'}
+          className="w-full bg-primary text-on-primary font-bold py-3 rounded-xl active:scale-95 transition-all"
+        >
           New Transaction
         </button>
       </div>

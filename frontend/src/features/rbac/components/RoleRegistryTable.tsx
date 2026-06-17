@@ -1,4 +1,3 @@
-import { useState } from 'react';
 
 const ROLES = [
   { id: 'admin', name: 'Admin', desc: 'Full system access, policy management, audit logs.', users: 4, color: 'bg-primary' },

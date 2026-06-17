@@ -1,4 +1,16 @@
+import { useLogout } from '../features/auth/hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import type { RootState } from '../store';
+
 export const TopNavBar = () => {
+  const { token } = useSelector((state: RootState) => state.auth);
+  const logoutMutation = useLogout();
+
+  const handleLogout = () => {
+    if (token) logoutMutation.mutate(token);
+  };
+
   return (
     <header className="fixed top-0 right-0 w-[calc(100%-280px)] h-16 backdrop-blur-md border-b border-outline-variant/10 shadow-sm flex justify-between items-center px-4 z-40 bg-surface/70 dark:bg-surface-dim/70">
       <div className="flex items-center gap-4">
@@ -20,9 +32,21 @@ export const TopNavBar = () => {
         </button>
         
         <div className="flex items-center gap-4 text-on-surface-variant">
-          <span className="material-symbols-outlined cursor-pointer hover:text-primary transition-all">notifications</span>
-          <span className="material-symbols-outlined cursor-pointer hover:text-primary transition-all">help_outline</span>
-          <span className="material-symbols-outlined cursor-pointer hover:text-primary transition-all">chat_bubble</span>
+          <Link to="/notifications" title="Notification Center">
+            <span className="material-symbols-outlined cursor-pointer hover:text-primary transition-all">notifications</span>
+          </Link>
+          <Link to="/notifications/preferences" title="Notification Preferences">
+            <span className="material-symbols-outlined cursor-pointer hover:text-primary transition-all">settings</span>
+          </Link>
+          <span className="material-symbols-outlined cursor-pointer hover:text-primary transition-all" title="Help">help_outline</span>
+          <button 
+            onClick={handleLogout}
+            disabled={logoutMutation.isPending}
+            className="flex items-center justify-center p-2 rounded-full hover:bg-error-container hover:text-on-error-container transition-all"
+            title="Logout"
+          >
+            <span className="material-symbols-outlined">logout</span>
+          </button>
         </div>
         
         <div className="h-8 w-8 rounded-full overflow-hidden border border-primary/30">

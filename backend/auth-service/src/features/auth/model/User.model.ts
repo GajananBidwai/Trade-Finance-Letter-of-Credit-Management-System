@@ -15,24 +15,34 @@ export enum UserStatus {
 }
 
 export interface IUser extends Document {
+  name: string;
   email: string;
   passwordHash: string;
   role: UserRole;
   status: UserStatus;
+  permissions?: string[];
   failedLoginCount: number;
   lockoutUntil: Date | null;
+  lastActiveAt: Date;
+  createdBy?: string;
+  approvedBy?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
 }
 
 const UserSchema = new Schema<IUser>({
+  name: { type: String, required: true },
   email: { type: String, required: true, unique: true, index: true },
   passwordHash: { type: String, required: true },
   role: { type: String, enum: Object.values(UserRole), required: true },
   status: { type: String, enum: Object.values(UserStatus), default: UserStatus.ACTIVE },
+  permissions: { type: [String], default: [] },
   failedLoginCount: { type: Number, default: 0 },
-  lockoutUntil: { type: Date, default: null }
+  lockoutUntil: { type: Date, default: null },
+  lastActiveAt: { type: Date, default: Date.now },
+  createdBy: { type: String, default: null },
+  approvedBy: { type: String, default: null }
 }, {
   timestamps: true
 });
