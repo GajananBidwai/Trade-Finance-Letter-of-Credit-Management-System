@@ -65,7 +65,12 @@ export class LCController {
 
   async getAllLCs(req: Request, res: Response) {
     try {
-      const lcs = await LCModel.find().sort({ createdAt: -1 });
+      const { status } = req.query;
+      const query: any = {};
+      if (status && typeof status === 'string' && status !== 'All Statuses') {
+        query.status = status;
+      }
+      const lcs = await LCModel.find(query).sort({ createdAt: -1 });
       res.status(200).json({ status: 'success', data: lcs });
     } catch (err: any) {
       res.status(500).json({ status: 'error', message: err.message });

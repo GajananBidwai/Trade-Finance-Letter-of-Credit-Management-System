@@ -49,13 +49,15 @@ export const TopNavBar = () => {
           </button>
         </div>
         
-        <div className="h-8 w-8 rounded-full overflow-hidden border border-primary/30">
-          <img 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtle_oUyOwmF9O1xSmPWe3oJ6MEfocF5RJmcRP_KheZM8oc6QXDfB6M9ky5VxGuUdDuEJ0w7_Myjch-jVO8N4WPNYUPribi73BxGuTOqr63HlkNlLGpUhv08_JZ9LfJpQDcRUyMR5j2UMVwi1aBank90Zk3vZGc8v2SRcw_CTtncU5u4bKpp6sJlp3HXSmTE8zRlOIc9Rx51bi4vF-XGMiSMurydWVVjVk2lhf6X-9ieExu26Uy_eFSPPrNCrDj7ETtngSYjwjrR8" 
-            alt="User Profile" 
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <Link to="/profile" className="cursor-pointer hover:ring-2 hover:ring-primary/50 rounded-full transition-all block">
+          <div className="h-8 w-8 rounded-full overflow-hidden border border-primary/30">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtle_oUyOwmF9O1xSmPWe3oJ6MEfocF5RJmcRP_KheZM8oc6QXDfB6M9ky5VxGuUdDuEJ0w7_Myjch-jVO8N4WPNYUPribi73BxGuTOqr63HlkNlLGpUhv08_JZ9LfJpQDcRUyMR5j2UMVwi1aBank90Zk3vZGc8v2SRcw_CTtncU5u4bKpp6sJlp3HXSmTE8zRlOIc9Rx51bi4vF-XGMiSMurydWVVjVk2lhf6X-9ieExu26Uy_eFSPPrNCrDj7ETtngSYjwjrR8" 
+              alt="User Profile" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </Link>
       </div>
     </header>
   );

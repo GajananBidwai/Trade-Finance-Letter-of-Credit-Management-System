@@ -4,7 +4,7 @@ import { DocumentRequirements } from '../features/lc/components/DocumentRequirem
 import { ReviewSubmit } from '../features/lc/components/ReviewSubmit';
 
 export const LcIssuancePage: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
 
   const renderStep = () => {
     switch (currentStep) {

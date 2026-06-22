@@ -9,11 +9,11 @@ import { WorkflowListPage } from './pages/WorkflowListPage';
 import { LcDetailPage } from './pages/LcDetailPage';
 import { DocumentPresentationPage } from './pages/DocumentPresentationPage';
 import { SettlementPage } from './pages/SettlementPage';
-import { AnalyticsDashboardPage } from './pages/AnalyticsDashboardPage';
 import { NotificationCenterPage } from './pages/NotificationCenterPage';
 import { NotificationPreferencesPage } from './pages/NotificationPreferencesPage';
 import { ReportingPage } from './pages/ReportingPage';
 import { AIAssistantHubPage } from './pages/AIAssistantHubPage';
+import { UserProfilePage } from './pages/UserProfilePage';
 
 function App() {
   return (
@@ -30,11 +30,11 @@ function App() {
           <Route path="/workflow/:id" element={<LcDetailPage />} />
           <Route path="/workflow/:id/documents" element={<DocumentPresentationPage />} />
           <Route path="/workflow/:id/settlement" element={<SettlementPage />} />
-          <Route path="/analytics" element={<AnalyticsDashboardPage />} />
           <Route path="/notifications" element={<NotificationCenterPage />} />
           <Route path="/notifications/preferences" element={<NotificationPreferencesPage />} />
           <Route path="/reports" element={<ReportingPage />} />
           <Route path="/ai-hub" element={<AIAssistantHubPage />} />
+          <Route path="/profile" element={<UserProfilePage />} />
         </Route>
 
         {/* Redirect unknown routes to dashboard */}

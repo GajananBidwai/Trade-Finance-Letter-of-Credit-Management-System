@@ -8,10 +8,11 @@ import { workflowApi } from '../features/workflow/services/workflowApi';
 export const WorkflowListPage: React.FC = () => {
   const navigate = useNavigate();
   const { token } = useSelector((state: RootState) => state.auth);
+  const [statusFilter, setStatusFilter] = React.useState('All Statuses');
 
   const { data: lcsData, isLoading, error } = useQuery({
-    queryKey: ['lcs'],
-    queryFn: () => workflowApi.getAllLCs(token as string),
+    queryKey: ['lcs', statusFilter],
+    queryFn: () => workflowApi.getAllLCs(token as string, statusFilter),
     enabled: !!token,
   });
 
@@ -49,7 +50,11 @@ export const WorkflowListPage: React.FC = () => {
       <div className="grid grid-cols-12 gap-default-gap items-center glass-panel p-4 rounded-xl">
         <div className="col-span-3">
           <label className="block text-label-md text-on-surface-variant mb-1 ml-1 uppercase">Workflow Status</label>
-          <select className="w-full bg-surface-container-high border-none rounded-lg text-body-md py-2 px-3 focus:ring-1 focus:ring-primary">
+          <select 
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="w-full bg-surface-container-high border-none rounded-lg text-body-md py-2 px-3 focus:ring-1 focus:ring-primary"
+          >
             <option>All Statuses</option>
             <option>ACTIVE</option>
             <option>PENDING_APPROVAL</option>

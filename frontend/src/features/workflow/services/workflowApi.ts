@@ -19,8 +19,12 @@ export interface LCStatusTransition {
 }
 
 export const workflowApi = {
-  getAllLCs: async (token: string) => {
-    const response = await api.get('/lc', {
+  getAllLCs: async (token: string, status?: string) => {
+    let url = '/lc';
+    if (status && status !== 'All Statuses') {
+      url += `?status=${status}`;
+    }
+    const response = await api.get(url, {
       headers: { Authorization: `Bearer ${token}` }
     });
     return response.data;
